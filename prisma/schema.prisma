@@ -1,0 +1,113 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          String          @id @default(cuid())
+  email       String          @unique
+  name        String?
+  image       String?
+  onboardedAt DateTime?
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+  accounts    GoogleAccount[]
+  routes      SyncRoute[]
+  jobs        SyncJob[]
+}
+
+model GoogleAccount {
+  id                    String        @id @default(cuid())
+  userId                String
+  user                  User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  googleSub             String        @unique
+  email                 String
+  name                  String?
+  encryptedRefreshToken String
+  scopes                String
+  status                String        @default("active")
+  isMain                Boolean       @default(false)
+  createdAt             DateTime      @default(now())
+  updatedAt             DateTime      @updatedAt
+  calendars             CalendarRef[]
+
+  @@index([userId])
+}
+
+model CalendarRef {
+  id               String        @id @default(cuid())
+  accountId        String
+  account          GoogleAccount @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  googleCalendarId String
+  name             String
+  color            String?
+  role             String        @default("ignored")
+  syncToken        String?
+  timeZone         String?
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+  sourceRoutes     SyncRoute[]   @relation("SourceCal")
+  targetRoutes     SyncRoute[]   @relation("TargetCal")
+
+  @@unique([accountId, googleCalendarId])
+}
+
+model SyncRoute {
+  id             String      @id @default(cuid())
+  userId         String
+  user           User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  sourceCalId    String
+  sourceCal      CalendarRef @relation("SourceCal", fields: [sourceCalId], references: [id], onDelete: Cascade)
+  targetCalId    String
+  targetCal      CalendarRef @relation("TargetCal", fields: [targetCalId], references: [id], onDelete: Cascade)
+  privacyMode    String      @default("full")
+  titlePrefix    String      @default("")
+  busyTitle      String      @default("Busy")
+  colorOverride  String?
+  filters        String      @default("{}")
+  enabled        Boolean     @default(true)
+  lastSyncedAt   DateTime?
+  lastError      String?
+  lastSyncStatus String?
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+  eventMaps      EventMap[]
+
+  @@index([userId])
+}
+
+model EventMap {
+  id               String    @id @default(cuid())
+  routeId          String
+  route            SyncRoute @relation(fields: [routeId], references: [id], onDelete: Cascade)
+  sourceCalendarId String
+  sourceEventId    String
+  targetEventId    String
+  sourceUpdated    String?
+  lastSyncedAt     DateTime?
+  status           String    @default("active")
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+
+  @@unique([sourceCalendarId, sourceEventId])
+  @@index([routeId])
+  @@index([targetEventId])
+}
+
+model SyncJob {
+  id        String   @id @default(cuid())
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  routeId   String?
+  status    String   @default("queued")
+  progress  String   @default("{}")
+  error     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+}
