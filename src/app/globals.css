@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  background: #0b0d10;
+  color: #e8edf4;
+}
+
+body {
+  background-image:
+    radial-gradient(1200px 600px at 10% -10%, rgba(94, 224, 181, 0.08), transparent 50%),
+    radial-gradient(900px 500px at 100% 0%, rgba(122, 184, 255, 0.06), transparent 45%);
+  min-height: 100vh;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #2a3340 transparent;
+}
+
+input,
+select,
+textarea,
+button {
+  font: inherit;
+}
+
+.card {
+  @apply rounded-2xl border border-ink-600 bg-ink-800/80 shadow-card;
+}
+
+.btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium transition;
+}
+
+.btn-primary {
+  @apply btn bg-mint-400 text-ink-950 hover:bg-mint-300 disabled:opacity-50;
+}
+
+.btn-ghost {
+  @apply btn border border-ink-600 bg-ink-700/50 text-mist-100 hover:border-mist-500/40 disabled:opacity-50;
+}
+
+.btn-danger {
+  @apply btn border border-red-500/30 bg-red-500/10 text-red-300 hover:bg-red-500/20;
+}
+
+.label {
+  @apply mb-1.5 block text-xs font-medium uppercase tracking-wide text-mist-500;
+}
+
+.field {
+  @apply w-full rounded-xl border border-ink-600 bg-ink-900 px-3 py-2.5 text-sm text-mist-100 outline-none ring-mint-400/0 transition focus:border-mint-400/50 focus:ring-2 focus:ring-mint-400/20;
+}
