@@ -36,6 +36,25 @@ The Next.js process starts the poll worker via instrumentation.ts. A standalone 
 SQLite is the default. Database file: prisma/dev.db. No extra services.
 
 
+## Deploy (Vercel + Neon)
+
+Production uses Postgres (Neon) on Vercel. The in-process poll worker is skipped on Vercel (`ENABLE_WORKER=false` and when `VERCEL=1`).
+
+1. Create a Neon Postgres database and copy its connection URL into `DATABASE_URL`.
+2. Import this GitHub repo into Vercel. Set Production environment variables:
+   - `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `GOOGLE_REDIRECT_URI`
+   - `TOKEN_ENCRYPTION_KEY`
+   - `NEXTAUTH_SECRET`, `NEXTAUTH_URL`
+   - `DATABASE_URL` (Neon)
+   - `CRON_SECRET`
+   - `ENABLE_WORKER=false`
+3. On the Google OAuth Web client, add production redirects:
+   - `https://YOUR_HOST/api/auth/callback/google`
+   - `https://YOUR_HOST/api/accounts/callback`
+4. At [cron-job.org](https://cron-job.org), create a job that POSTs every 5 minutes to `https://YOUR_HOST/api/sync` with header `Authorization: Bearer <CRON_SECRET>`.
+
+
+
 ## Environment
 
 See `.env.example`. Required:
