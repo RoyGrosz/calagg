@@ -1,13 +1,15 @@
-# CalAgg
+# EchoCal
 
-Calendar Aggregator. Connect multiple Google accounts and one-way mirror selected source calendars onto a dedicated target calendar under your main account. Every mirrored event carries provenance so native Google Calendar (web or phone) is enough. No Chrome extension.
+Formerly CalAgg. Product name EchoCal; repository/host remain calagg.
+
+One-way calendar mirrors. Connect multiple Google accounts and one-way mirror selected source calendars onto a dedicated target calendar under your main account. Every mirrored event carries provenance so native Google Calendar (web or phone) is enough. No Chrome extension.
 
 One-way only: source to target. Never ping-pong. The target is a dedicated calendar (default name "From other calendars"), never Primary.
 
 ## What it does
 
 - First Google login is the main account (target owner).
-- Later Add account links work or secondary Google accounts to the same CalAgg user.
+- Later Add account links work or secondary Google accounts to the same EchoCal user.
 - Sync routes map a source calendar to the target with a title prefix, provenance block, per-source color, privacy mode (full / title / busy), and filters (declined, OOO, focus time, optional all-day).
 - Background poll every 5 minutes.
 - Disconnect an account wipes EventMaps and deletes mirrored events on the target.
@@ -77,7 +79,7 @@ You cannot complete OAuth until these exist. The app code paths are complete; Go
 2. APIs and Services, Library: enable Google Calendar API.
 3. APIs and Services, OAuth consent screen:
    - User type: External
-   - App name: CalAgg
+   - App name: EchoCal
    - Publishing status: Testing for personal use
    - Scopes: https://www.googleapis.com/auth/calendar plus openid, email, profile
    - Test users: add every Gmail you will connect (main + work/secondary)
@@ -91,13 +93,13 @@ You cannot complete OAuth until these exist. The app code paths are complete; Go
 
 After OAuth works:
 
-1. First Google account = main. CalAgg stores the encrypted refresh token.
+1. First Google account = main. EchoCal stores the encrypted refresh token.
 2. Setup wizard: create or select "From other calendars" on the main account.
 3. Add another Google account (or skip and pick other calendars on the main account).
 4. Choose sources, prefix, privacy; run first sync.
 5. Open Google Calendar as the main user, show the target calendar.
 
-If Google returns no refresh_token (you previously granted the app), revoke CalAgg under Google Account, Third-party access, and sign in again. The app always requests prompt=consent and access_type=offline.
+If Google returns no refresh_token (you previously granted the app), revoke EchoCal under Google Account, Third-party access, and sign in again. The app always requests prompt=consent and access_type=offline.
 
 
 ## Sync engine
@@ -105,7 +107,7 @@ If Google returns no refresh_token (you previously granted the app), revoke CalA
 On poll or Resync:
 
 1. List source events with a stored syncToken, or a plus/minus 3 month window (singleEvents=true so recurrences are instances). Invalid/expired sync tokens trigger a full window resync (HTTP 410).
-2. Skip events that already have calagg_* private extended properties (never re-clone CalAgg mirrors).
+2. Skip events that already have calagg_* private extended properties (never re-clone EchoCal mirrors).
 3. Apply route filters.
 4. Map through privacy mode plus provenance.
 5. Upsert on the target calendar using the main account token (events.insert / events.patch). Deletes use events.delete when the source is cancelled or now filtered.
@@ -118,7 +120,7 @@ Provenance on the mirrored event:
     Source: Acme Work · Team calendar
     Account: you@acme.com
     Open original: <link if available>
-    Synced by CalAgg · do not edit
+    Synced by EchoCal · do not edit
 
 Private extended properties: calagg_route_id, calagg_source_event_id, calagg_source_cal_id, calagg_source_account.
 
