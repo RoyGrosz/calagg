@@ -1,11 +1,12 @@
 "use client";
 
+import Link from "next/link";
 import { signIn } from "next-auth/react";
 import { Logo } from "@/components/Logo";
 
 export default function LoginPage() {
   return (
-    <div className="mx-auto flex min-h-screen max-w-lg flex-col justify-center px-6">
+    <div className="mx-auto flex min-h-screen max-w-lg flex-col justify-center px-6 py-10">
       <div className="card p-8">
         <div className="mb-6 flex items-center gap-3">
           <Logo className="h-9 w-9" />
@@ -36,7 +37,35 @@ export default function LoginPage() {
         <p className="mt-3 text-center text-xs text-mist-500">
           The first Google account you connect becomes your main (target) account.
         </p>
+        <p className="mt-6 text-center text-xs text-mist-500">
+          By continuing you agree to our{" "}
+          <Link href="/terms" className="text-mint-400 hover:underline">
+            Terms
+          </Link>{" "}
+          and{" "}
+          <Link href="/privacy" className="text-mint-400 hover:underline">
+            Privacy Policy
+          </Link>
+          .
+        </p>
       </div>
+      <p className="mt-6 text-center text-xs text-mist-500">
+        <Link href="/" className="hover:text-mist-100">
+          ← Back to home
+        </Link>
+        {" · "}
+        <Link href="/privacy" className="hover:text-mist-100">
+          Privacy
+        </Link>
+        {" · "}
+        <Link href="/terms" className="hover:text-mist-100">
+          Terms
+        </Link>
+        {" · "}
+        <Link href="/security" className="hover:text-mist-100">
+          Security
+        </Link>
+      </p>
     </div>
   );
 }

@@ -6,7 +6,7 @@ import { signOut, useSession } from "next-auth/react";
 import { Logo } from "./Logo";
 
 const links = [
-  { href: "/", label: "Status" },
+  { href: "/app", label: "Status" },
   { href: "/routes", label: "Routes" },
   { href: "/onboarding", label: "Setup" },
   { href: "/settings", label: "Settings" },
@@ -19,7 +19,7 @@ export function Nav() {
   return (
     <header className="sticky top-0 z-20 border-b border-ink-600/80 bg-ink-950/80 backdrop-blur">
       <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-5 py-3">
-        <Link href="/" className="flex items-center gap-2.5">
+        <Link href="/app" className="flex items-center gap-2.5">
           <Logo />
           <span className="font-display text-lg tracking-tight">CalAgg</span>
         </Link>

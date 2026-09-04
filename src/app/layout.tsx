@@ -14,8 +14,13 @@ const display = Fraunces({
 });
 
 export const metadata: Metadata = {
-  title: "CalAgg — Calendar Aggregator",
-  description: "One-way mirror of Google calendars onto a dedicated target, with provenance.",
+  title: {
+    default: "CalAgg — Free Google Calendar Aggregator",
+    template: "%s · CalAgg",
+  },
+  description:
+    "Free one-way Google Calendar aggregator. Mirror multiple accounts onto a dedicated target with provenance, privacy modes, and encrypted tokens.",
+  metadataBase: new URL("https://calagg.vercel.app"),
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
