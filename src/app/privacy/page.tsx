@@ -5,7 +5,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "How CalAgg collects, uses, and protects data for Google Calendar aggregation.",
+  description: "How EchoCal collects, uses, and protects data for Google Calendar aggregation.",
 };
 
 export default function PrivacyPage() {
@@ -21,12 +21,12 @@ export default function PrivacyPage() {
           <section>
             <h2 className="font-display text-xl text-mist-100">Overview</h2>
             <p className="mt-2">
-              CalAgg (&quot;we&quot;, &quot;the app&quot;) is a free personal tool that one-way mirrors selected Google
+              EchoCal (&quot;we&quot;, &quot;the app&quot;) is a free personal tool that one-way mirrors selected Google
               calendars onto a dedicated target calendar you control. Production site:{" "}
               <a className="text-mint-400 hover:underline" href="https://calagg.vercel.app">
                 https://calagg.vercel.app
               </a>
-              . This policy describes what we collect, how we use it, and your controls. CalAgg uses
+              . This policy describes what we collect, how we use it, and your controls. EchoCal uses
               Google APIs and complies with the{" "}
               <a
                 className="text-mint-400 hover:underline"
@@ -45,7 +45,7 @@ export default function PrivacyPage() {
             <ul className="mt-2 list-disc space-y-2 pl-5">
               <li>
                 <strong className="text-mist-100">Google profile / email</strong> — used to identify
-                your CalAgg user and linked Google accounts (main and secondary).
+                your EchoCal user and linked Google accounts (main and secondary).
               </li>
               <li>
                 <strong className="text-mist-100">OAuth tokens</strong> — access and refresh tokens
@@ -78,7 +78,7 @@ export default function PrivacyPage() {
               or as required by law.
             </p>
             <p className="mt-2">
-              CalAgg does not use Google user data for AI/ML model training unrelated to providing
+              EchoCal does not use Google user data for AI/ML model training unrelated to providing
               or improving the user-facing sync features you configure.
             </p>
           </section>
@@ -86,9 +86,9 @@ export default function PrivacyPage() {
           <section>
             <h2 className="font-display text-xl text-mist-100">Google API Limited Use</h2>
             <p className="mt-2">
-              CalAgg&apos;s use of information received from Google APIs adheres to the Google API
+              EchoCal&apos;s use of information received from Google APIs adheres to the Google API
               Services User Data Policy, including the Limited Use requirements. Calendar data is
-              used only to provide and improve the user-facing sync features of CalAgg.
+              used only to provide and improve the user-facing sync features of EchoCal.
             </p>
           </section>
 
@@ -119,11 +119,11 @@ export default function PrivacyPage() {
           <section>
             <h2 className="font-display text-xl text-mist-100">Retention</h2>
             <p className="mt-2">
-              We retain account and sync configuration data while your CalAgg account is active.
+              We retain account and sync configuration data while your EchoCal account is active.
               Mirrored events live on your Google target calendar under your control. When you
               disconnect an account or delete routes, we remove related EventMaps and attempt to
               delete corresponding mirrored events on the target. SyncJob logs may be retained
-              briefly for debugging and then discarded. You may request deletion of your CalAgg
+              briefly for debugging and then discarded. You may request deletion of your EchoCal
               account data by contacting us (below).
             </p>
           </section>
@@ -134,7 +134,7 @@ export default function PrivacyPage() {
               <li>Disconnect linked Google accounts in Settings (wipes maps and mirrored events for that account).</li>
               <li>Delete or pause SyncRoutes; change privacy modes and filters.</li>
               <li>
-                Revoke CalAgg access at any time in your{" "}
+                Revoke EchoCal access at any time in your{" "}
                 <a
                   className="text-mint-400 hover:underline"
                   href="https://myaccount.google.com/permissions"
@@ -151,7 +151,7 @@ export default function PrivacyPage() {
           <section>
             <h2 className="font-display text-xl text-mist-100">Children</h2>
             <p className="mt-2">
-              CalAgg is not directed to children under 13, and we do not knowingly collect personal
+              EchoCal is not directed to children under 13, and we do not knowingly collect personal
               information from children.
             </p>
           </section>
@@ -168,7 +168,7 @@ export default function PrivacyPage() {
           <section>
             <h2 className="font-display text-xl text-mist-100">Contact</h2>
             <p className="mt-2">
-              CalAgg support — open an issue at{" "}
+              EchoCal support — open an issue at{" "}
               <a
                 className="text-mint-400 hover:underline"
                 href="https://github.com/RoyGrosz/calagg"
