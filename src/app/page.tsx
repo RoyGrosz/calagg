@@ -1,160 +1,127 @@
-"use client";
-
-import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { AppShell } from "@/components/AppShell";
+import { MarketingHeader } from "@/components/MarketingHeader";
+import { SiteFooter } from "@/components/SiteFooter";
+import { OpenAppCta } from "@/components/OpenAppCta";
+import { Logo } from "@/components/Logo";
 
-type RouteRow = {
-  id: string;
-  privacyMode: string;
-  titlePrefix: string;
-  enabled: boolean;
-  lastSyncedAt: string | null;
-  lastError: string | null;
-  lastSyncStatus: string | null;
-  mappedEvents: number;
-  source: { name: string; color: string | null; accountEmail: string };
-  target: { name: string };
-};
+const features = [
+  {
+    title: "Multi-account",
+    body: "Connect a main Google account plus work or secondary accounts. Pick which calendars to mirror.",
+  },
+  {
+    title: "One-way only",
+    body: "Source → dedicated target. Never ping-pong. Primary is never written.",
+  },
+  {
+    title: "Privacy modes",
+    body: "full, title-only, or busy — control how much detail lands on the target.",
+  },
+  {
+    title: "Provenance",
+    body: "Title prefixes, description tags, and calagg_* extendedProperties so you always know the source.",
+  },
+  {
+    title: "Native Calendar",
+    body: "No extension. Use Google Calendar on web or phone — mirrored events are just events.",
+  },
+  {
+    title: "Free personal tool",
+    body: "Built for personal use. Poll sync about every 5 minutes. Tokens encrypted at rest.",
+  },
+];
 
-export default function HomePage() {
-  const router = useRouter();
-  const [routes, setRoutes] = useState<RouteRow[]>([]);
-  const [accounts, setAccounts] = useState<{ id: string; email: string; isMain: boolean; status: string }[]>([]);
-  const [error, setError] = useState<string | null>(null);
-  const [busy, setBusy] = useState<string | null>(null);
-  const [onboarded, setOnboarded] = useState<boolean | null>(null);
+const steps = [
+  {
+    n: "1",
+    title: "Sign in with Google",
+    body: "Your first account becomes the main (target) account.",
+  },
+  {
+    n: "2",
+    title: "Pick a dedicated target",
+    body: "CalAgg creates or uses a calendar that is never Primary.",
+  },
+  {
+    n: "3",
+    title: "Mirror sources",
+    body: "Link accounts, choose calendars, set privacy modes — sync runs on its own.",
+  },
+];
 
-  const load = useCallback(async () => {
-    const [me, r, a] = await Promise.all([fetch("/api/me"), fetch("/api/routes"), fetch("/api/accounts")]);
-    if (me.status === 401) {
-      router.push("/login");
-      return;
-    }
-    const mej = await me.json();
-    const rj = await r.json();
-    const aj = await a.json();
-    setOnboarded(Boolean(mej.user?.onboardedAt) || (rj.routes?.length ?? 0) > 0);
-    setRoutes(rj.routes ?? []);
-    setAccounts(aj.accounts ?? []);
-  }, [router]);
-
-  useEffect(() => {
-    load().catch((e) => setError(e.message));
-  }, [load]);
-
-  async function resync(routeIds?: string[]) {
-    setBusy(routeIds?.[0] ?? "all");
-    setError(null);
-    try {
-      const res = await fetch("/api/sync", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ routeIds }),
-      });
-      const json = await res.json();
-      if (!res.ok) throw new Error(json.error || "Sync failed");
-      const jobId = json.jobId as string;
-      for (let i = 0; i < 60; i++) {
-        await new Promise((r) => setTimeout(r, 1000));
-        const st = await fetch(`/api/sync/status?jobId=${jobId}`);
-        const sj = await st.json();
-        if (sj.job?.status === "done" || sj.job?.status === "error") {
-          if (sj.job.status === "error") setError(sj.job.error || "Sync error");
-          break;
-        }
-      }
-      await load();
-    } catch (e) {
-      setError(e instanceof Error ? e.message : String(e));
-    } finally {
-      setBusy(null);
-    }
-  }
-
+export default function LandingPage() {
   return (
-    <AppShell>
-      <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
-        <div>
-          <p className="text-xs uppercase tracking-[0.2em] text-mint-400">Status</p>
-          <h1 className="mt-1 font-display text-3xl">Mirrors</h1>
-          <p className="mt-1 text-sm text-mist-500">Last sync per route. One-way, source → target.</p>
+    <div className="flex min-h-screen flex-col">
+      <MarketingHeader />
+      <main className="mx-auto w-full max-w-5xl flex-1 px-5 py-12 sm:py-16">
+        <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-mint-400/30 bg-mint-400/10 px-3 py-1 text-xs font-medium uppercase tracking-wider text-mint-300">
+          Free
         </div>
-        <div className="flex gap-2">
-          <Link className="btn-ghost" href="/onboarding">
-            Setup
-          </Link>
-          <button className="btn-primary" onClick={() => resync()} disabled={Boolean(busy) || !routes.length}>
-            {busy === "all" ? "Syncing…" : "Resync all"}
-          </button>
-        </div>
-      </div>
-
-      {onboarded === false && (
-        <div className="card mb-6 p-5">
-          <p className="text-sm text-mist-300">Finish setup to create a target calendar and pick sources.</p>
-          <Link className="btn-primary mt-3 inline-flex" href="/onboarding">
-            Open setup
-          </Link>
-        </div>
-      )}
-
-      {error && (
-        <div className="mb-4 rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-200">
-          {error}
-        </div>
-      )}
-
-      <section className="mb-8 grid gap-3 sm:grid-cols-3">
-        {accounts.map((a) => (
-          <div key={a.id} className="card p-4">
-            <div className="text-xs uppercase tracking-wide text-mist-500">
-              {a.isMain ? "Main" : "Linked"} · {a.status}
+        <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+          <div className="max-w-2xl">
+            <div className="mb-4 flex items-center gap-3">
+              <Logo className="h-10 w-10" />
+              <span className="font-display text-2xl tracking-tight">CalAgg</span>
             </div>
-            <div className="mt-1 truncate text-sm">{a.email}</div>
-          </div>
-        ))}
-        {!accounts.length && <div className="text-sm text-mist-500">No accounts yet.</div>}
-      </section>
-
-      <section className="space-y-3">
-        {routes.map((r) => (
-          <div key={r.id} className="card flex flex-wrap items-center justify-between gap-4 p-5">
-            <div>
-              <div className="flex items-center gap-2">
-                <span
-                  className="h-2.5 w-2.5 rounded-full"
-                  style={{ background: r.source.color || "#5ee0b5" }}
-                />
-                <span className="font-medium">
-                  {r.titlePrefix ? `[${r.titlePrefix}] ` : ""}
-                  {r.source.name}
-                </span>
-                <span className="text-xs text-mist-500">→ {r.target.name}</span>
-              </div>
-              <div className="mt-1 text-xs text-mist-500">
-                {r.source.accountEmail} · {r.privacyMode} · {r.mappedEvents} mapped ·{" "}
-                {r.enabled ? "on" : "paused"} · {r.lastSyncStatus || "never synced"}
-                {r.lastSyncedAt ? ` · ${new Date(r.lastSyncedAt).toLocaleString()}` : ""}
-              </div>
-              {r.lastError && <div className="mt-1 text-xs text-red-300">{r.lastError}</div>}
+            <h1 className="font-display text-4xl leading-tight text-mist-100 sm:text-5xl">
+              One-way Google Calendar mirrors, with provenance.
+            </h1>
+            <p className="mt-4 text-base leading-relaxed text-mist-500 sm:text-lg">
+              Aggregate calendars from multiple Google accounts onto a dedicated target.
+              Never ping-pong. Native Google Calendar is enough — no extension.
+            </p>
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <Link href="/login" className="btn-primary">
+                Continue with Google
+              </Link>
+              <Link href="/security" className="btn-ghost">
+                How we keep it safe
+              </Link>
             </div>
-            <button
-              className="btn-ghost"
-              disabled={Boolean(busy)}
-              onClick={() => resync([r.id])}
-            >
-              {busy === r.id ? "Syncing…" : "Resync"}
-            </button>
+            <OpenAppCta />
           </div>
-        ))}
-        {!routes.length && onboarded && (
-          <p className="text-sm text-mist-500">
-            No routes yet. <Link href="/onboarding" className="text-mint-400">Add sources in setup</Link>.
-          </p>
-        )}
-      </section>
-    </AppShell>
+          <div className="card max-w-sm p-5 text-sm text-mist-300">
+            <p className="text-xs uppercase tracking-[0.2em] text-mint-400">At a glance</p>
+            <ul className="mt-3 space-y-2">
+              <li>Dedicated target calendar (never Primary)</li>
+              <li>Privacy: full · title · busy</li>
+              <li>Refresh tokens AES-256-GCM encrypted</li>
+              <li>Poll sync ~5 min · calagg.vercel.app</li>
+            </ul>
+          </div>
+        </div>
+
+        <section className="mt-16">
+          <h2 className="font-display text-2xl text-mist-100">Features</h2>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {features.map((f) => (
+              <div key={f.title} className="card p-5">
+                <h3 className="font-medium text-mist-100">{f.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-mist-500">{f.body}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="mt-16">
+          <h2 className="font-display text-2xl text-mist-100">How it works</h2>
+          <div className="mt-6 grid gap-4 sm:grid-cols-3">
+            {steps.map((s) => (
+              <div key={s.n} className="card p-5">
+                <div className="text-xs uppercase tracking-[0.2em] text-mint-400">Step {s.n}</div>
+                <h3 className="mt-2 font-medium text-mist-100">{s.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-mist-500">{s.body}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-8 text-center">
+            <Link href="/login" className="btn-primary">
+              Get started — Continue with Google
+            </Link>
+          </div>
+        </section>
+      </main>
+      <SiteFooter />
+    </div>
   );
 }
