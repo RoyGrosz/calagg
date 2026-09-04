@@ -189,7 +189,7 @@ export async function deleteTargetEvent(
 }
 
 export function googleErrorCode(err: unknown): number | undefined {
-  if (err && typeof err && typeof err === "object") {
+  if (err && typeof err === "object") {
     const anyErr = err as { code?: number; response?: { status?: number }; status?: number };
     return anyErr.code ?? anyErr.status ?? anyErr.response?.status;
   }
