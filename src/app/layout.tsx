@@ -24,6 +24,9 @@ export const metadata: Metadata = {
   },
   description,
   metadataBase: new URL("https://calagg.vercel.app"),
+  verification: {
+    google: "C0EJt9fXagagALpr0S9QCPiq1iBeefctF7shifDVE",
+  },
   icons: {
     icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
   },
