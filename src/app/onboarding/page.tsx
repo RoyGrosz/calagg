@@ -435,7 +435,7 @@ export default function OnboardingPage() {
           {job?.error && <p className="mt-2 text-sm text-red-300">{job.error}</p>}
           <button
             className="btn-primary mt-6"
-            onClick={() => router.push("/")}
+            onClick={() => router.push("/app")}
             disabled={job?.status === "running" || job?.status === "queued"}
           >
             {job?.status === "done" || job?.status === "error" ? "Go to status" : "Running…"}
