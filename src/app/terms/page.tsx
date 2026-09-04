@@ -5,7 +5,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
-  description: "Terms for using CalAgg, a free as-is Google Calendar aggregator.",
+  description: "Terms for using EchoCal, a free as-is Google Calendar aggregator.",
 };
 
 export default function TermsPage() {
@@ -21,12 +21,12 @@ export default function TermsPage() {
           <section>
             <h2 className="font-display text-xl text-mist-100">The service</h2>
             <p className="mt-2">
-              CalAgg is a free personal tool that one-way mirrors selected Google calendars onto a
+              EchoCal is a free personal tool that one-way mirrors selected Google calendars onto a
               dedicated target calendar. Production:{" "}
               <a className="text-mint-400 hover:underline" href="https://calagg.vercel.app">
                 https://calagg.vercel.app
               </a>
-              . By using CalAgg you agree to these terms and our{" "}
+              . By using EchoCal you agree to these terms and our{" "}
               <Link href="/privacy" className="text-mint-400 hover:underline">
                 Privacy Policy
               </Link>
@@ -37,7 +37,7 @@ export default function TermsPage() {
           <section>
             <h2 className="font-display text-xl text-mist-100">As-is, free tool</h2>
             <p className="mt-2">
-              CalAgg is provided free of charge, &quot;as is&quot; and &quot;as available,&quot; without warranties of
+              EchoCal is provided free of charge, &quot;as is&quot; and &quot;as available,&quot; without warranties of
               any kind, express or implied, including fitness for a particular purpose or
               uninterrupted availability. Sync may lag, fail, or omit events. You are responsible
               for verifying important calendar data in Google Calendar itself.
@@ -47,7 +47,7 @@ export default function TermsPage() {
           <section>
             <h2 className="font-display text-xl text-mist-100">Your responsibilities</h2>
             <ul className="mt-2 list-disc space-y-2 pl-5">
-              <li>Use CalAgg only with Google accounts you are authorized to access.</li>
+              <li>Use EchoCal only with Google accounts you are authorized to access.</li>
               <li>Configure privacy modes appropriately for sensitive calendars.</li>
               <li>Do not abuse the service, attempt unauthorized access, or disrupt others.</li>
               <li>Comply with Google&apos;s terms and applicable law.</li>
@@ -57,10 +57,10 @@ export default function TermsPage() {
           <section>
             <h2 className="font-display text-xl text-mist-100">Limitation of liability</h2>
             <p className="mt-2">
-              To the fullest extent permitted by law, the operator of CalAgg is not liable for any
+              To the fullest extent permitted by law, the operator of EchoCal is not liable for any
               indirect, incidental, special, consequential, or punitive damages, or any loss of
               data, calendars, or business, arising from your use of the service. Aggregate
-              liability for any claim related to CalAgg shall not exceed zero dollars, as the
+              liability for any claim related to EchoCal shall not exceed zero dollars, as the
               service is free.
             </p>
           </section>
@@ -68,7 +68,7 @@ export default function TermsPage() {
           <section>
             <h2 className="font-display text-xl text-mist-100">Changes and termination</h2>
             <p className="mt-2">
-              We may change or discontinue CalAgg at any time. We may update these terms; the
+              We may change or discontinue EchoCal at any time. We may update these terms; the
               effective date will change when we do. You may stop using the service and revoke
               Google access at any time.
             </p>
@@ -77,7 +77,7 @@ export default function TermsPage() {
           <section>
             <h2 className="font-display text-xl text-mist-100">Contact</h2>
             <p className="mt-2">
-              CalAgg support — open an issue at{" "}
+              EchoCal support — open an issue at{" "}
               <a
                 className="text-mint-400 hover:underline"
                 href="https://github.com/RoyGrosz/calagg"

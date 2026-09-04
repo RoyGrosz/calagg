@@ -83,7 +83,7 @@ export async function createNamedCalendar(
 ): Promise<{ id: string; summary: string; timeZone?: string | null }> {
   const cal = calendarForEncryptedToken(encryptedRefreshToken);
   const res = await cal.calendars.insert({
-    requestBody: { summary, description: "CalAgg target calendar. Mirrored events — do not edit." },
+    requestBody: { summary, description: "EchoCal target calendar. Mirrored events — do not edit." },
   });
   if (!res.data.id) throw new Error("Google did not return a calendar id");
   try {
@@ -189,7 +189,7 @@ export async function deleteTargetEvent(
 }
 
 export function googleErrorCode(err: unknown): number | undefined {
-  if (err && typeof err === "object") {
+  if (err && typeof err && typeof err === "object") {
     const anyErr = err as { code?: number; response?: { status?: number }; status?: number };
     return anyErr.code ?? anyErr.status ?? anyErr.response?.status;
   }
