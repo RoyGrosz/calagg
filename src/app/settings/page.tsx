@@ -108,7 +108,7 @@ export default function SettingsPage() {
       <section className="card p-6">
         <h2 className="font-display text-xl">Delete all mirrors</h2>
         <p className="mt-1 text-sm text-mist-500">
-          Removes every CalAgg-created event from the target calendar and clears EventMaps. Routes stay so you can resync.
+          Removes every EchoCal-created event from the target calendar and clears EventMaps. Routes stay so you can resync.
         </p>
         <label className="label mt-4">Type DELETE to confirm</label>
         <input className="field max-w-xs" value={confirmText} onChange={(e) => setConfirmText(e.target.value)} />

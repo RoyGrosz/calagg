@@ -14,7 +14,7 @@ export default function LoginPage() {
         <div className="mb-6 flex items-center gap-3">
           <Logo className="h-9 w-9" />
           <div>
-            <div className="font-display text-2xl">CalAgg</div>
+            <div className="font-display text-2xl">EchoCal</div>
             <div className="text-sm text-mist-500">One calendar view</div>
           </div>
         </div>

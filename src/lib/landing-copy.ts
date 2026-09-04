@@ -5,7 +5,7 @@ export const benefits = [
   },
   {
     title: "Keep your Primary calendar clean",
-    body: "Mirrors land on a dedicated target — CalAgg never writes to Primary, so your main calendar stays yours.",
+    body: "Mirrors land on a dedicated target — EchoCal never writes to Primary, so your main calendar stays yours.",
   },
   {
     title: "Share only what you mean to",
@@ -30,7 +30,7 @@ export const steps = [
   {
     n: "2",
     title: "Pick a dedicated target",
-    body: "CalAgg creates or uses a calendar that is never Primary.",
+    body: "EchoCal creates or uses a calendar that is never Primary.",
   },
   {
     n: "3",
@@ -41,15 +41,15 @@ export const steps = [
 
 export const faqs = [
   {
-    q: "Can I use CalAgg while the Google Cloud app is in Testing?",
+    q: "Can I use EchoCal while the Google Cloud app is in Testing?",
     a: "Yes. In Testing mode, only accounts you add as test users on the OAuth consent screen can sign in. Ask the project owner to add your Google account before you continue with Google.",
   },
   {
     q: "Why might I need to sign in again after about a week?",
-    a: "While the app is in Google's Testing publishing status, refresh tokens may expire after roughly 7 days. Reconnect the account from CalAgg when sync stops; this improves once the app is verified / in production.",
+    a: "While the app is in Google's Testing publishing status, refresh tokens may expire after roughly 7 days. Reconnect the account from EchoCal when sync stops; this improves once the app is verified / in production.",
   },
   {
-    q: "Does CalAgg ever write to my Primary calendar?",
+    q: "Does EchoCal ever write to my Primary calendar?",
     a: "No. Mirrors always go to a dedicated target calendar you choose. Primary is never written.",
   },
   {
@@ -58,15 +58,15 @@ export const faqs = [
   },
   {
     q: "How do I disconnect or revoke access?",
-    a: "Remove accounts inside CalAgg, and/or revoke CalAgg under your Google Account → Security → Third-party access. You can also delete mirrored events from the target calendar anytime.",
+    a: "Remove accounts inside EchoCal, and/or revoke EchoCal under your Google Account → Security → Third-party access. You can also delete mirrored events from the target calendar anytime.",
   },
   {
     q: "What's the difference between busy and full?",
     a: "Full copies title (and more detail as configured). Busy shows opaque blocks so others see that you're occupied without revealing the event name. Title-only sits in between.",
   },
   {
-    q: "Is CalAgg free? Do I need a card?",
-    a: "CalAgg is a free personal tool. There is no paid plan and no credit card required.",
+    q: "Is EchoCal free? Do I need a card?",
+    a: "EchoCal is a free personal tool. There is no paid plan and no credit card required.",
   },
   {
     q: "How often does sync run?",

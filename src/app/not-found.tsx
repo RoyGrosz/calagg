@@ -17,7 +17,7 @@ export default function NotFound() {
           Page not found
         </h1>
         <p className="mt-3 text-sm leading-relaxed text-mist-500">
-          That link doesn't match anything on CalAgg. Head home or sign in to open the app.
+          That link doesn't match anything on EchoCal. Head home or sign in to open the app.
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
           <Link href="/" className="btn-primary">
