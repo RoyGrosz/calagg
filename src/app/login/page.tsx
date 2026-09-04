@@ -7,16 +7,19 @@ import { Logo } from "@/components/Logo";
 export default function LoginPage() {
   return (
     <div className="mx-auto flex min-h-screen max-w-lg flex-col justify-center px-6 py-10">
-      <div className="card p-8">
+      <a href="#main-content" className="skip-to-content">
+        Skip to content
+      </a>
+      <div id="main-content" className="card p-8">
         <div className="mb-6 flex items-center gap-3">
           <Logo className="h-9 w-9" />
           <div>
             <div className="font-display text-2xl">CalAgg</div>
-            <div className="text-sm text-mist-500">Calendar aggregator</div>
+            <div className="text-sm text-mist-500">One calendar view</div>
           </div>
         </div>
         <h1 className="font-display text-3xl leading-tight text-mist-100">
-          One-way mirrors, with provenance.
+          See every Google Calendar in one place.
         </h1>
         <p className="mt-3 text-sm leading-relaxed text-mist-500">
           Connect a main Google account, pick a dedicated target calendar, then

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" fill="#0b0d10"/>
+  <circle cx="200" cy="80" r="280" fill="#5ee0b5" fill-opacity="0.08"/>
+  <circle cx="1100" cy="100" r="220" fill="#7ab8ff" fill-opacity="0.07"/>
+  <rect x="80" y="160" width="72" height="72" rx="16" fill="#1e2630" stroke="#5ee0b5" stroke-width="3"/>
+  <rect x="108" y="178" width="72" height="72" rx="16" fill="#0b0d10" stroke="#7ab8ff" stroke-width="3"/>
+  <path d="M130 210h36M130 228h26" stroke="#5ee0b5" stroke-width="4" stroke-linecap="round"/>
+  <text x="210" y="220" fill="#e8edf4" font-family="Georgia, serif" font-size="64" font-weight="600">CalAgg</text>
+  <text x="80" y="320" fill="#e8edf4" font-family="Georgia, serif" font-size="48">See every Google Calendar</text>
+  <text x="80" y="380" fill="#b7c2d0" font-family="Georgia, serif" font-size="48">in one place.</text>
+  <text x="80" y="460" fill="#8b97a8" font-family="system-ui, sans-serif" font-size="24">Open source · MIT · No extension · Sync ~5 min</text>
+  <rect x="720" y="180" width="400" height="300" rx="24" fill="#161c24" stroke="#2a3340" stroke-width="2"/>
+  <text x="748" y="220" fill="#5ee0b5" font-family="system-ui, sans-serif" font-size="14" letter-spacing="3">FROM OTHER CALENDARS</text>
+  <rect x="748" y="245" width="344" height="64" rx="12" fill="#10141a" stroke="#2a3340"/>
+  <text x="768" y="275" fill="#7ab8ff" font-family="system-ui, sans-serif" font-size="13">[Work]</text>
+  <text x="830" y="275" fill="#e8edf4" font-family="system-ui, sans-serif" font-size="18">Standup</text>
+  <text x="768" y="295" fill="#8b97a8" font-family="system-ui, sans-serif" font-size="13">Tue · 9:30–9:45</text>
+  <rect x="748" y="325" width="344" height="64" rx="12" fill="#10141a" stroke="#2a3340"/>
+  <text x="768" y="355" fill="#5ee0b5" font-family="system-ui, sans-serif" font-size="13">[Personal]</text>
+  <text x="860" y="355" fill="#e8edf4" font-family="system-ui, sans-serif" font-size="18">Busy</text>
+  <text x="768" y="375" fill="#8b97a8" font-family="system-ui, sans-serif" font-size="13">Tue · 12:00–13:00</text>
+</svg>
