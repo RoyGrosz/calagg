@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "CalAgg — See every Google Calendar in one place";
+export const alt = "EchoCal — one-way calendar mirrors";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -58,12 +58,12 @@ export default function OpenGraphImage() {
               fontWeight: 700,
             }}
           >
-            C
+            E
           </div>
-          <div style={{ fontSize: 42, fontWeight: 600, letterSpacing: -1 }}>CalAgg</div>
+          <div style={{ fontSize: 42, fontWeight: 600, letterSpacing: -1 }}>EchoCal</div>
         </div>
         <div style={{ fontSize: 58, fontWeight: 600, lineHeight: 1.15, maxWidth: 900, letterSpacing: -1 }}>
-          See every Google Calendar in one place.
+          One-way Google Calendar mirrors, with provenance.
         </div>
         <div style={{ marginTop: 28, fontSize: 26, color: "#8b97a8" }}>
           Open source · MIT · No extension · Sync about every 5 minutes

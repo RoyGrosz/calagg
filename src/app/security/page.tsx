@@ -5,7 +5,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 
 export const metadata: Metadata = {
   title: "Security",
-  description: "How CalAgg protects OAuth tokens and calendar data.",
+  description: "How EchoCal protects OAuth tokens and calendar data.",
 };
 
 export default function SecurityPage() {
@@ -16,7 +16,7 @@ export default function SecurityPage() {
         <p className="text-xs uppercase tracking-[0.2em] text-mint-400">Trust</p>
         <h1 className="mt-2 font-display text-4xl text-mist-100">Security</h1>
         <p className="mt-2 text-sm text-mist-500">
-          Short overview of how CalAgg handles credentials and calendar writes.
+          Short overview of how EchoCal handles credentials and calendar writes.
         </p>
 
         <div className="mt-8 space-y-6 text-sm leading-relaxed text-mist-300">
@@ -31,7 +31,7 @@ export default function SecurityPage() {
             <h2 className="font-medium text-mist-100">Dedicated target — never Primary</h2>
             <p className="mt-2">
               Mirrored events are written only to a dedicated target calendar you choose or create.
-              CalAgg does not write to your Google Primary calendar.
+              EchoCal does not write to your Google Primary calendar.
             </p>
           </div>
           <div className="card p-5">
@@ -45,13 +45,13 @@ export default function SecurityPage() {
           <div className="card p-5">
             <h2 className="font-medium text-mist-100">One-way sync</h2>
             <p className="mt-2">
-              Sync is source → target only. CalAgg never ping-pongs changes back onto sources.
+              Sync is source → target only. EchoCal never ping-pongs changes back onto sources.
             </p>
           </div>
           <div className="card p-5">
             <h2 className="font-medium text-mist-100">Revoke access anytime</h2>
             <p className="mt-2">
-              Disconnect accounts in CalAgg Settings, or revoke the app under{" "}
+              Disconnect accounts in EchoCal Settings, or revoke the app under{" "}
               <a
                 className="text-mint-400 hover:underline"
                 href="https://myaccount.google.com/permissions"
