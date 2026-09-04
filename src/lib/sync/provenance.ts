@@ -8,7 +8,7 @@ export function buildProvenanceBlock(ctx: MapContext, event: SourceEvent): strin
   if (event.htmlLink) {
     lines.push(`Open original: ${event.htmlLink}`);
   }
-  lines.push("Synced by CalAgg · do not edit");
+  lines.push("Synced by EchoCal · do not edit");
   return lines.join("\n");
 }
 
