@@ -2,7 +2,7 @@
   "name": "calagg",
   "version": "1.0.0",
   "private": true,
-  "description": "CalAgg — one-way Google Calendar aggregator with provenance",
+  "description": "EchoCal — one-way Google Calendar mirrors, with provenance",
   "scripts": {
     "dev": "next dev",
     "build": "prisma generate && prisma db push && next build",

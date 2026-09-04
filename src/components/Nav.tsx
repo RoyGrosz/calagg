@@ -21,7 +21,7 @@ export function Nav() {
       <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-5 py-3">
         <Link href="/app" className="flex items-center gap-2.5">
           <Logo />
-          <span className="font-display text-lg tracking-tight">CalAgg</span>
+          <span className="font-display text-lg tracking-tight">EchoCal</span>
         </Link>
         <nav className="flex items-center gap-1">
           {links.map((l) => {

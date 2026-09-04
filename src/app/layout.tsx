@@ -13,14 +13,14 @@ const display = Fraunces({
   variable: "--font-display",
 });
 
-const title = "CalAgg — See every Google Calendar in one place";
+const title = "EchoCal — one-way calendar mirrors";
 const description =
-  "Free one-way Google Calendar aggregator. Mirror work and personal calendars onto a dedicated target with provenance, privacy modes, and encrypted tokens. No extension.";
+  "One-way Google Calendar mirrors, with provenance. Mirror work and personal calendars onto a dedicated target with privacy modes and encrypted tokens. No extension.";
 
 export const metadata: Metadata = {
   title: {
     default: title,
-    template: "%s · CalAgg",
+    template: "%s · EchoCal",
   },
   description,
   metadataBase: new URL("https://calagg.vercel.app"),
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "https://calagg.vercel.app",
-    siteName: "CalAgg",
+    siteName: "EchoCal",
     title,
     description,
   },

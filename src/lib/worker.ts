@@ -13,7 +13,7 @@ export async function runAllEnabledRoutes(): Promise<void> {
     try {
       await syncRoute(route.id);
     } catch (err) {
-      console.error(`[calagg worker] route ${route.id} failed`, err);
+      console.error(`[echocal] route ${route.id} failed`, err);
     }
   }
 }
@@ -25,10 +25,10 @@ export function startWorker(): void {
   started = true;
 
   const interval = Number(process.env.SYNC_INTERVAL_MS || 5 * 60 * 1000);
-  console.log(`[calagg worker] polling every ${Math.round(interval / 1000)}s`);
+  console.log(`[echocal] polling every ${Math.round(interval / 1000)}s`);
 
   const kick = () => {
-    runAllEnabledRoutes().catch((err) => console.error("[calagg worker] tick failed", err));
+    runAllEnabledRoutes().catch((err) => console.error("[echocal] tick failed", err));
   };
 
   timer = setInterval(kick, interval);

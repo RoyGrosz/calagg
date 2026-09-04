@@ -5,7 +5,7 @@ export function SiteFooter() {
     <footer className="mt-auto border-t border-ink-600/80">
       <div className="mx-auto flex max-w-5xl flex-col gap-4 px-5 py-8 text-sm text-mist-500 sm:flex-row sm:items-start sm:justify-between">
         <div className="max-w-md space-y-2">
-          <p className="font-display text-mist-300">CalAgg</p>
+          <p className="font-display text-mist-300">EchoCal</p>
           <p>
             Free personal one-way Google Calendar aggregator. Homepage:{" "}
             <a className="text-mint-400 hover:underline" href="https://calagg.vercel.app">
@@ -14,7 +14,7 @@ export function SiteFooter() {
             .
           </p>
           <p>
-            CalAgg support — open an issue at{" "}
+            EchoCal support — open an issue at{" "}
             <a
               className="text-mint-400 hover:underline"
               href="https://github.com/RoyGrosz/calagg"
