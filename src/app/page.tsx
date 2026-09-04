@@ -61,7 +61,7 @@ export default function LandingPage() {
             <div className="card border-mint-400/20 p-6">
               <h2 className="font-display text-xl text-mist-100">The solution</h2>
               <p className="mt-3 text-sm leading-relaxed text-mist-500">
-                CalAgg mirrors selected calendars one-way onto a dedicated target.
+                EchoCal mirrors selected calendars one-way onto a dedicated target.
                 You keep using Google Calendar; events arrive with source labels and
                 the privacy level you chose.
               </p>

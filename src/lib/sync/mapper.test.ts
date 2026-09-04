@@ -54,7 +54,7 @@ describe("privacy mapping", () => {
     expect(payload.description).toContain("Source: Acme Work · Team calendar");
     expect(payload.description).toContain("Account: you@acme.com");
     expect(payload.description).toContain("Open original: https://calendar.google.com/event?eid=abc");
-    expect(payload.description).toContain("Synced by CalAgg · do not edit");
+    expect(payload.description).toContain("Synced by EchoCal · do not edit");
     expect(payload.description).toContain("Daily notes");
     expect(payload.extendedProperties.private).toEqual({
       calagg_route_id: "route-1",
@@ -69,7 +69,7 @@ describe("privacy mapping", () => {
   it("title mode drops location and original description", () => {
     const payload = toTargetPayload(event(), { ...ctx, privacyMode: "title" });
     expect(payload.location).toBeUndefined();
-    expect(payload.description).toContain("Synced by CalAgg");
+    expect(payload.description).toContain("Synced by EchoCal");
     expect(payload.description).not.toContain("Daily notes");
     expect(payload.hangoutLink).toBeUndefined();
     expect(payload.summary).toBe("[Acme] Standup");
